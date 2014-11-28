@@ -15,18 +15,6 @@ app.configure(function () {
 // call to routes - - - - - - - - - - - - - - - - - - - - - - - - 
 routes = require('./routes/users')(app);
 
-
-// socket.io - - - - - - - - - - - - - - - - - - - - - - - - - - 
-io.sockets.on('connection',function(socket){
-  socket.on('test',function(data){
-  
-      newData = "socket: "+data;
-      io.sockets.emit('new message',{data:newData});
-      console.log("socket: "+data);
-  });
-});
-
-
 // DB connection - - - - - - - - - - - - - - - - - - - - - - - - 
 //mongoose.connect('mongodb://localhost/ccles', function(err, res) {
 mongoose.connect('mongodb://ccles:Ccles13@ds051980.mongolab.com:51980/ccles', function(err, res) {
