@@ -3,7 +3,6 @@ var express  = require("express"),
     http     = require("http"),
     server   = http.createServer(app),
     mongoose = require('mongoose');
-    io = require('socket.io').listen(server);
    
 
 app.configure(function () {
