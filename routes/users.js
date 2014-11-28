@@ -117,7 +117,9 @@ module.exports = function(app) {
 }
 
 */
-
+  app.get('/',function(req, res){
+    res.send(':)');
+  });
   app.get('/users', findAllUsers);
   app.get('/user/:id', findByIdUser);
   app.post('/user', addUser);
