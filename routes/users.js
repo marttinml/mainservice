@@ -59,6 +59,8 @@ module.exports = function(app) {
     var user = new User({
       number:     req.body.number,
       name:       req.body.name,
+      lastname:   req.body.lastname,
+      img:        req.body.img,
       contacts:   req.body.contacts
     });
 
@@ -85,9 +87,14 @@ module.exports = function(app) {
 
           if(sesion.user){
             
-           var numbers = sesion.user.contacts;
+           var contacts = sesion.user.contacts;
 
-           if(numbers){
+           if(contacts){
+              
+              var numbers = [];
+              for(var i = 0 ; i < contacts.length ; i++){
+                numbers.push(contacts[i].number);
+              }
 
               _findByNumbers(numbers,function(err,users){
                 sesion.contacts = users;
