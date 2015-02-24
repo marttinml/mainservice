@@ -28,6 +28,6 @@ mongoose.connect('mongodb://ccles:Ccles13@ds051980.mongolab.com:51980/ccles', fu
 var port = process.env.PORT || 5000;
 server.listen(port, function() {
       console.log(" - - - - - - - - - - - - - - - - - - - - - - - ");
-      console.log(" |     API REST - http://localhost:5000      | ");
+      console.log(" |     API REST - http://localhost:"+port+"      | ");
       console.log(" - - - - - - - - - - - - - - - - - - - - - - - ");
 });

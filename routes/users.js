@@ -61,6 +61,7 @@ module.exports = function(app) {
       name:       req.body.name,
       lastname:   req.body.lastname,
       img:        req.body.img,
+      password:   req.body.password,
       contacts:   req.body.contacts
     });
 
@@ -114,6 +115,24 @@ module.exports = function(app) {
 
     //res.send(sesion);
   };
+
+
+  login = function(req, res){
+
+    console.log(req.body);
+
+     User.find({ number:req.body.user,password:req.body.pass }, function(err, users) {
+      if(users.length) {
+        console.log('Called: //  - - - - -  login()');
+        console.log(users);
+        res.send(true);
+      } else {
+        console.log('ERROR: ' + err);
+        res.send(false);
+      }
+    });
+  };
+
 /*
 
 
@@ -129,7 +148,7 @@ module.exports = function(app) {
   });
   app.get('/users', findAllUsers);
   app.get('/user/:id', findByIdUser);
-  app.post('/user', addUser);
+  app.post('/adduser', addUser);
   app.get('/getsesion/:number', getSesion);
-
+  app.post('/login', login);
 }
